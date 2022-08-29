@@ -37,7 +37,7 @@ let modal = null;
 function onImgOpenClick(evt) {
     evt.preventDefault();
 
-    if (evt.target.classList.contains('gallery__link')) {
+    if (!evt.target.classList.contains('gallery__image')) {
         return;
     };
 
@@ -50,12 +50,10 @@ function onImgOpenClick(evt) {
     
     modal.show();
 
-    //прослушивание клавиатуры есть пока отркыто модальное окно
+    //прослушивание клавиатуры есть, пока отркыто модальное окно
     window.addEventListener('keydown', onEscKeyPress);
-};
-
-//закрытие модального окна клавишей ESC
-function onEscKeyPress(evt) {
+    //закрытие модального окна клавишей ESC
+    function onEscKeyPress(evt) {
     console.log(evt);
     const ESC_KEY_CODE = 'Escape';
 
@@ -63,6 +61,9 @@ function onEscKeyPress(evt) {
         modal.close();  
         window.removeEventListener('keydown', onEscKeyPress);
     }
-}
+    }
+};
+
+
 
 
